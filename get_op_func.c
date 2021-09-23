@@ -17,6 +17,7 @@ void get(char *token, stack_t **stack, unsigned int line_number)
 		{"add", func_add},
 		{"swap", func_swap},
 		{"pop", func_pop},
+		{"sub", func_sub},
 		{"nop", func_nop},
 		{NULL, NULL}
 	};
