@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * func_pop - function to remove elements top of list
+ * func_nop - function to remove elements top of list
  * @stack: double pointer to struct
  * @line_number: number of lines into the file
  * Return: Return print list

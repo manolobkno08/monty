@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 	{
 		line_number++;
 		token = strtok(buffer, "\n\t\r ");
-		if (token != NULL)
+		if (token != NULL && token != '#')
 		{
 			get(token, &h, line_number);
 		}
