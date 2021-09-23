@@ -69,6 +69,7 @@ void free_vars(int status, void *arg);
 void close_f(int status, void *arg);
 
 void func_sub(stack_t **stack, unsigned int line_number);
+void func_div(stack_t **stack, unsigned int line_number);
 
 int main(int argc, char *argv[]);
 
