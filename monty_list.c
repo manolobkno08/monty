@@ -112,7 +112,6 @@ void func_pop(stack_t **stack, unsigned int line_number)
 	if (vars.stack_len == 0)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		free(stack);
 		exit(EXIT_FAILURE);
 	}
 	node = *stack;
