@@ -21,7 +21,7 @@ void func_sub(stack_t **stack, unsigned int line_number)
 
 /**
  * func_div - divide second node from top node
- * @h: top of list
+ * @stack: top of list
  * @line_number: line of command
  */
 
@@ -34,7 +34,7 @@ void func_div(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-   	
+
 	n = (*stack)->n;
 	if (n == 0)
 	{
