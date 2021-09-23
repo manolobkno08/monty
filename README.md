@@ -3,7 +3,7 @@
 
 # Monty
 
-Its a program that interprete ths specific monty files:
+Its a program that interprete the specific monty files:
 
 - `monty_list_2.c` --> first file that contains the functions
 
