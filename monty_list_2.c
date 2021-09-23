@@ -20,28 +20,27 @@ void func_nop(stack_t **stack, unsigned int line_number)
  */
 void func_swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = NULL;
+	stack_t *tmp;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (vars.stack_len < 2)
 	{
-		printf("L%u: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	tmp = (*stack)->next;
-	if (tmp->next != NULL)
+	if (vars.stack_len == 2)
 	{
-		(*stack)->next = tmp->next;
-		(*stack)->next->prev = *stack;
+		*stack = (*stack)->next;
+		return;
+	}
 
-	}
-	else
-	{
-		tmp->prev->prev = tmp;
-		tmp->prev->next = NULL;
-	}
-	tmp->prev = NULL;
+	tmp = (*stack)->next;
+	tmp->prev = (*stack)->prev;
+	(*stack)->prev->next = tmp;
+	(*stack)->prev = tmp;
+	(*stack)->next = tmp->next;
+	tmp->next->prev = *stack;
 	tmp->next = *stack;
-	(*stack) = tmp;
+	*stack = tmp;
 }
 
 /**
