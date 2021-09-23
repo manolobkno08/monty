@@ -44,3 +44,15 @@ void func_div(stack_t **stack, unsigned int line_number)
 	func_pop(stack, line_number);
 	(*stack)->n /= n;
 }
+
+/**
+ * func_e - function
+ * @stack: double pointer to struct
+ * @line_number: number of lines into the file
+ * Return: Return print list
+ */
+void func_e(stack_t **stack, unsigned int line_number)
+{
+	(void)(stack);
+	(void)(line_number);
+}
