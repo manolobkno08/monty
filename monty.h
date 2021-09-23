@@ -68,6 +68,8 @@ void free_stack(int status, void *arg);
 void free_vars(int status, void *arg);
 void close_f(int status, void *arg);
 
+void func_sub(stack_t **stack, unsigned int line_number);
+
 int main(int argc, char *argv[]);
 
 
