@@ -20,6 +20,7 @@ void get(char *token, stack_t **stack, unsigned int line_number)
 		{"sub", func_sub},
 		{"div", func_div},
 		{"nop", func_nop},
+		{"#", func_e},
 		{NULL, NULL}
 	};
 	int iter;
