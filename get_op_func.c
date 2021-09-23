@@ -54,7 +54,7 @@ void free_stack(int status, void *arg)
 		(*stack)->prev = NULL;
 	}
 
-	while (*stack && (*stack)->next)
+	while (*stack != NULL)
 	{
 		next = (*stack)->next;
 		free(*stack);

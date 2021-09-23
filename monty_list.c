@@ -13,7 +13,7 @@ static int integer(const char *str)
 
 	for (i = 0; str[i]; i++)
 	{
-		if(str[i] == '-' && i == 0)
+		if (str[i] == '-' && i == 0)
 			continue;
 		if (isdigit(str[i]) == 0)
 			return (1);
