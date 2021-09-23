@@ -7,16 +7,16 @@
  * Return: no return
  */
 
-static int integer(char *str)
+static int integer(const char *str)
 {
-	int i = 0;
+	int i;
 
-	for (; str[i]; i++)
+	for (i = 0; str[i]; i++)
 	{
-		if (isdigit(str[i]))
-		{
+		if(str[i] == '-' && i == 0)
+			continue;
+		if (isdigit(str[i]) == 0)
 			return (1);
-		}
 	}
 	return (0);
 }
@@ -33,7 +33,7 @@ void func_push(stack_t **stack, unsigned int line_number)
 	char *arg;
 
 	arg = strtok(NULL, " \n\t\r");
-	if (arg == NULL || integer(arg) == 0)
+	if (arg == NULL || integer(arg))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -91,7 +91,7 @@ void func_pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node = *stack;
 
-	if (vars.stack_len == 0)
+	if (vars.stack_len == 0 || *stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
@@ -115,20 +115,14 @@ void func_pop(stack_t **stack, unsigned int line_number)
 		free(stack);
 		exit(EXIT_FAILURE);
 	}
+	node = *stack;
+	(*stack)->next->prev = (*stack)->prev;
+	(*stack)->prev->next = (*stack)->next;
+	if (vars.stack_len != 1)
+		*stack = (*stack)->next;
 	else
-	{
-		node = *stack;
-		(*stack)->next->prev = (*stack)->prev;
-		(*stack)->prev->next = (*stack)->next;
-		if (vars.stack_len != 1)
-		{
-			*stack = (*stack)->next;
-		}
-		else
-		{
-			*stack = NULL;
-		}
-		free(node);
-		vars.stack_len--;
-	}
+		*stack = NULL;
+
+	free(node);
+	vars.stack_len--;
 }
